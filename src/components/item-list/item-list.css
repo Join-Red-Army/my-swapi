@@ -1,0 +1,39 @@
+.item-list {
+  height: 490px;
+}
+
+.item-list ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.item-list li {
+  padding: 10px;
+  padding-left: 20px;
+
+  background-color: #202020;
+  border: 1px solid #2a3235;
+  border-bottom: 0;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 23px;
+  font-weight: 300;
+
+  transition: background-color .21 linear;
+
+  cursor: pointer;
+}
+
+.item-list li:hover {
+  background-color: #323f38;
+}
+
+.item-list li:first-child {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.item-list li:last-child {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
