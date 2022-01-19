@@ -6,3 +6,10 @@ export const listLoaded = (listContent) => ({
   payload: listContent
 });
 
+
+export const planetRequested = () => ({ type: 'fetch_planet_request' });
+
+export const planetLoaded = (planetContent) => ({
+  type: 'fetch_planet_success',
+  payload: planetContent
+});

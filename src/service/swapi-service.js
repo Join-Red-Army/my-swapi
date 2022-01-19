@@ -30,14 +30,17 @@ export default class SwapiService {
   }
 
   _transformPlanet = (planet) => {
+    const id = this._extractId(planet);
     return {
-      id: this._extractId(planet),
+      id,
       name: planet.name,
       population: planet.population,
       diameter: planet.diameter,
       gravity: planet.gravity,
       orbitalPeriod: planet.orbital_period,
-      terrain: planet.terrain
+      terrain: planet.terrain,
+      
+      image: `${this._imageBase}/planets/${id}.jpg`,
     };
   }
 
