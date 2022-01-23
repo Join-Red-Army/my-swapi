@@ -1,9 +1,13 @@
 .row {
-  margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  width: 100%;
 }
 
 .row div {
-  flex: 0 49.5%;
+  /* flex: 0 49.5%; */
+  margin: 0 auto;
+  width: 590px;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import withSwapiService from '../hoc';
-import { descriptionRequested, descriptionLoaded, changeItem } from '../../redux/actions';
+import { descriptionRequested, descriptionLoaded, changeItem, onChangeItem } from '../../redux/actions';
 import './description.css';
 
 import Spinner from '../spinner';
@@ -15,21 +15,14 @@ class Description extends Component {
 
   componentDidMount() {
     const { 
-      swapiService, serviceMethod, itemId,
-      descriptionRequested, descriptionLoaded
+      swapiService, serviceMethod, 
+      itemId, onChangeItem
     } = this.props;
-
-    console.log(itemId);
-    
+  
     if (itemId === null) return;
-
-    descriptionRequested();
-
-    swapiService[serviceMethod](itemId)
-      .then((data) => {
-        descriptionLoaded(data);
-      });
+    onChangeItem(itemId, swapiService, serviceMethod)
   }
+
 
   render () {
     const { descriptionLoading, descriptionContent } = this.props;
@@ -43,7 +36,6 @@ class Description extends Component {
   
         <div className='description__details'>
         <ul className='description__list'>
-          <li>{id}</li>
           { 
             Object.entries(descriptionPairs)
               .map((pair, i) => this.createListItem(pair, i))
@@ -52,7 +44,7 @@ class Description extends Component {
         </div>
   
         <div className='description__img'>
-          <img src={image} alt='image' />
+          <img src={image} alt='no image' />
         </div>
 
       </div>
@@ -72,7 +64,12 @@ const mapStore = ({
       itemId };
 };
 
-const mapDispatch = { descriptionRequested, descriptionLoaded }
+//
+// const mapDispatch = { descriptionRequested, descriptionLoaded }
+
+const mapDispatch = (dispatch) => ({
+  onChangeItem: (...args) => dispatch(onChangeItem(...args, dispatch))
+});
 
 export default withSwapiService()(
   connect(mapStore, mapDispatch)(Description)

@@ -16,11 +16,11 @@ export default class SwapiService {
   }
 
 
+  // Planets
   getAllPlanets = async () => {
     const response = await fetch(this._apiBase + '/planets');
     const planets = await response.json();
     return planets.results.map(this._transformPlanet)
-      //.slice(0, 10);
   };
 
   getPlanet = async (id) => {
@@ -44,9 +44,9 @@ export default class SwapiService {
   }
 
 
+  // People
   getAllPeople = async () => {
     const response = await this.getResource('/people/');
-    console.log(response)
     const people = await response;
     return people.results.map(this._transformPerson);
   }
@@ -70,5 +70,36 @@ export default class SwapiService {
       image: `${this._imageBase}/characters/${id}.jpg`,
     };
   }
+
+
+  // Starships
+  getAllStarships = async () => {
+    const res = await this.getResource(`/starships/`);
+    return res.results.map(this._transformStarship);
+  }
+  getStarship = async (id) => {
+    const starship = await this.getResource(`/starships/${id}`);
+    return this._transformStarship(starship);
+  }
+
+  getStarshipImage = ({id}) => {
+    return `${this._imageBase}/starships/${id}.jpg`
+  };
+
+  _transformStarship = (starship) => {
+    const id = this._extractId(starship);
+    return {
+      id,
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.cost_in_credits,
+      length: starship.length,
+      crew: starship.crew,
+      passengers: starship.passengers,
+      cargoCapacity: starship.cargoCapacity,
+      image: `${this._imageBase}/starships/${id}.jpg`
+    }
+  };
 
 }

@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  padding: 25px;
+  margin: 20px 0;
+}
+
+.nav__link {
+  margin-right: 40px;
+  display: inline-block;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+
+  color: skyblue;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: aquamarine;
+}

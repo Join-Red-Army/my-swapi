@@ -10,8 +10,7 @@ import Spinner from '../spinner';
 class ItemList extends Component {
 
   componentDidMount() {
-    const { listLoaded, swapiService, serviceMethod, onChangeMethod } = this.props;
-    console.log(onChangeMethod)
+    const { listLoaded, swapiService, serviceMethod } = this.props;
 
     swapiService[serviceMethod]()
       .then((data) => {
@@ -25,8 +24,6 @@ class ItemList extends Component {
       swapiService, onChangeItem, onChangeMethod } = this.props;
 
     if (listLoading) return <Spinner />;
-    console.log(listContent);
-
 
     return (
       <div className='item-list'>
@@ -51,8 +48,10 @@ class ItemList extends Component {
 };
 
 
-const mapState = ({ listContent, listLoading }) => ({ listContent, listLoading });
-// const mapDispatch = { listRequested, listLoaded, onChangeItem };
+const mapState = ({ listContent, listLoading }) => ({ 
+  listContent, listLoading 
+});
+
 const mapDispatch = (dispatch) => { 
   return {
     listRequested: () => dispatch(listRequested()), 

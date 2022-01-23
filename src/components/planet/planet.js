@@ -14,7 +14,7 @@ class Planet extends Component {
     const { swapiService, planetRequested, planetLoaded } = this.props;
 
     planetRequested();
-    let id = Math.floor(Math.random() * 17 + 1);
+    let id = Math.floor(Math.random() * 16 + 2);
 
     swapiService.getPlanet(id)
       .then((data) => {
@@ -39,13 +39,13 @@ class Planet extends Component {
         <img 
           className='planet__img'
           src={image}
-          alt='planet img'/>
+          alt='no image'/>
     
         <ul className='planet__info'>
           <li className='name'>{name}</li>
-          <li>Population: {population}</li>
+          {/* <li>Population: {population}</li> */}
           <li>Diameter: {diameter} km</li>
-          <li>Gravity: {gravity}</li>
+          {/* <li>Gravity: {gravity}</li> */}
           <li>Terrain: {terrain}</li>
         </ul>
   

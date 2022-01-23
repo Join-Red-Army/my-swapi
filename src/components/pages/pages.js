@@ -10,7 +10,6 @@ export const PlanetsPage = ({id}) => {
   />;
 };
 
-
 export const PeoplePage = () => {
   return <Row 
   left={ <ItemList serviceMethod={'getAllPeople'} onChangeMethod={'getPerson'}/> } 
@@ -18,3 +17,22 @@ export const PeoplePage = () => {
   />;
 };
 
+export const StarshipsPage = () => {
+  return <Row 
+  left={ <ItemList serviceMethod={'getAllStarships'} onChangeMethod={'getStarship'}/> } 
+  right={ <Description serviceMethod={'getStarship'} /> }
+  />;
+};
+
+export const Intro = () => {
+  return (
+    <div className='intro'>
+      <span>
+        My Swapi - это учебное приложение, которое создано с использованием библиотек React, Redux, Router и сетевых запросов.
+      </span>
+
+      
+      
+    </div>
+  )
+}

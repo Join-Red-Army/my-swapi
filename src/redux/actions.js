@@ -7,6 +7,7 @@ export const listLoaded = (listContent) => ({
   payload: listContent
 });
 
+
 export const onChangeItem = (id, service, method, dispatch) => {
   dispatch(descriptionRequested());
 
