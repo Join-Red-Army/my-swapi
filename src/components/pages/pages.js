@@ -13,7 +13,7 @@ export const PlanetsPage = ({id}) => {
 
 export const PeoplePage = () => {
   return <Row 
-  left={ <ItemList serviceMethod={'getAllPeople'} /> } 
+  left={ <ItemList serviceMethod={'getAllPeople'} onChangeMethod={'getPerson'}/> } 
   right={ <Description serviceMethod={'getPerson'} /> }
   />;
 };

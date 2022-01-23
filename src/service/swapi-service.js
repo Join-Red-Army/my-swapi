@@ -45,13 +45,14 @@ export default class SwapiService {
 
 
   getAllPeople = async () => {
-    const response = await this.getResource('/people');
-    const people = await response.json();
-    return people.results.map(this._transformPeople);
+    const response = await this.getResource('/people/');
+    console.log(response)
+    const people = await response;
+    return people.results.map(this._transformPerson);
   }
 
   getPerson = async (id) => {
-    const response = await this.getResource(`/people/${id}.jpg`);
+    const response = await this.getResource(`/people/${id}`);
     return this._transformPerson(response);
   };
 
@@ -66,7 +67,7 @@ export default class SwapiService {
       mass: person.mass,
       height: person.height,
 
-      image: `${this._imageBase}/planets/${id}.jpg`,
+      image: `${this._imageBase}/characters/${id}.jpg`,
     };
   }
 
