@@ -1,42 +1,54 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { listRequested, listLoaded } from '../../redux/actions';
+import { listRequested, listLoaded, changeItem } from '../../redux/actions';
 import WithSwapiService from '../hoc'
 import './item-list.css';
 
-import Item from '../item';
 import Spinner from '../spinner';
+
 
 class ItemList extends Component {
 
   componentDidMount() {
-    const { listLoaded, swapiService } = this.props;
+    const { listLoaded, swapiService, serviceMethod } = this.props;
 
-    swapiService.getAllPlanets()
-      .then((newContent) => {
-        listLoaded(newContent);
+    swapiService[serviceMethod]()
+      .then((data) => {
+        listLoaded(data);
       });
-  }
+  };
 
   render() {
-    const { listLoading, listContent } = this.props;
+    const { listLoading, listContent, changeItem } = this.props;
 
-    // if (listLoading) return <Spinner />;
+    if (listLoading) return <Spinner />;
+
 
     return (
       <div className='item-list'>
-        { listLoading ? <Spinner /> : null }
         <ul>
-          {listContent.map(({id, ...data}) => <Item data={data} key={id} />)}
+          {
+            listContent.map(({id, name}) => {
+              return (
+                <li 
+                  key={id}
+                  onClick={() => changeItem(id)}
+                >
+                  {name}
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
     );
-  }
+  };
+
 };
 
 
 const mapState = ({ listContent, listLoading }) => ({ listContent, listLoading });
-const mapDispatch = { listRequested, listLoaded };
+const mapDispatch = { listRequested, listLoaded, changeItem };
 
 export default WithSwapiService()(
   connect(mapState, mapDispatch)(ItemList)

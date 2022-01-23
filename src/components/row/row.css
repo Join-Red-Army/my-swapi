@@ -1,0 +1,9 @@
+.row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row div {
+  flex: 0 49.5%;
+}

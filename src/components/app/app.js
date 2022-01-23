@@ -1,14 +1,16 @@
 import React from 'react';
 import Planet from '../planet';
-import ItemList from '../item-list/item-list';
 import './app.css';
+
+import { PlanetsPage, PeoplePage } from '../pages';
 
 
 const App = () => {
   return (
     <div className='app'>
       <Planet />
-      <ItemList />
+      <PlanetsPage />
+
     </div>
   );
 };

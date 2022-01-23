@@ -8,14 +8,13 @@ import Spinner from '../spinner';
 
 
 
-
 class Planet extends Component {
 
   updatePlanet() {
     const { swapiService, planetRequested, planetLoaded } = this.props;
 
     planetRequested();
-    let id = Math.floor(Math.random() * 18);
+    let id = Math.floor(Math.random() * 17 + 1);
 
     swapiService.getPlanet(id)
       .then((data) => {
@@ -31,7 +30,6 @@ class Planet extends Component {
 
   render() {
     const { planetContent, planetLoading } = this.props;
-    
     const { name, population, diameter, gravity, terrain, image } = planetContent;
 
     if (planetLoading) return <Spinner />;

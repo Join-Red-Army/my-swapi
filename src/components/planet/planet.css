@@ -41,8 +41,12 @@
   90% {
     opacity: 1;
   }
-  100% {
+  98% {
       transform: scale(1);
       opacity: 0;
   }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+}
 }
