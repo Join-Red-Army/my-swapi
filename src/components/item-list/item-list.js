@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { listRequested, listLoaded, changeItem } from '../../redux/actions';
+import { listRequested, listLoaded, onChangeItem } from '../../redux/actions';
 import WithSwapiService from '../hoc'
 import './item-list.css';
 
@@ -10,7 +10,8 @@ import Spinner from '../spinner';
 class ItemList extends Component {
 
   componentDidMount() {
-    const { listLoaded, swapiService, serviceMethod } = this.props;
+    const { listLoaded, swapiService, serviceMethod, onChangeMethod } = this.props;
+    console.log(onChangeMethod)
 
     swapiService[serviceMethod]()
       .then((data) => {
@@ -19,9 +20,12 @@ class ItemList extends Component {
   };
 
   render() {
-    const { listLoading, listContent, changeItem } = this.props;
+    const { 
+      listLoading, listContent, 
+      swapiService, onChangeItem, onChangeMethod } = this.props;
 
     if (listLoading) return <Spinner />;
+    console.log(listContent);
 
 
     return (
@@ -32,7 +36,7 @@ class ItemList extends Component {
               return (
                 <li 
                   key={id}
-                  onClick={() => changeItem(id)}
+                  onClick={() => onChangeItem(id, swapiService, onChangeMethod)}
                 >
                   {name}
                 </li>
@@ -48,7 +52,14 @@ class ItemList extends Component {
 
 
 const mapState = ({ listContent, listLoading }) => ({ listContent, listLoading });
-const mapDispatch = { listRequested, listLoaded, changeItem };
+// const mapDispatch = { listRequested, listLoaded, onChangeItem };
+const mapDispatch = (dispatch) => { 
+  return {
+    listRequested: () => dispatch(listRequested()), 
+    listLoaded: (pay) => dispatch(listLoaded(pay)), 
+    onChangeItem: (...pay) => onChangeItem(...pay, dispatch)
+  }
+};
 
 export default WithSwapiService()(
   connect(mapState, mapDispatch)(ItemList)

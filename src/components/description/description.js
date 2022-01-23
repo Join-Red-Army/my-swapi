@@ -21,7 +21,6 @@ class Description extends Component {
 
     console.log(itemId);
     
-    if (itemId === this.currentId) return;
     if (itemId === null) return;
 
     descriptionRequested();
@@ -73,7 +72,7 @@ const mapStore = ({
       itemId };
 };
 
-const mapDispatch = { descriptionRequested, descriptionLoaded, changeItem }
+const mapDispatch = { descriptionRequested, descriptionLoaded }
 
 export default withSwapiService()(
   connect(mapStore, mapDispatch)(Description)

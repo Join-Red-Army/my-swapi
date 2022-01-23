@@ -3,11 +3,9 @@ import Row from '../row';
 import ItemList from '../item-list';
 import Description from '../description';
 
-import { connect } from 'react-redux';
-
 export const PlanetsPage = ({id}) => {
   return <Row 
-  left={ <ItemList serviceMethod={'getAllPlanets'} actionMethod={'getPlanet'} /> } 
+  left={ <ItemList serviceMethod={'getAllPlanets'} onChangeMethod={'getPlanet'} /> } 
   right={ <Description serviceMethod={'getPlanet'} id={id}/> }
   />;
 };

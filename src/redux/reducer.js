@@ -23,9 +23,9 @@ const reducer = (state = initialState, action) => {
     case 'fetch_list_success':
       return {...state, listLoading: false, error: null, listContent: action.payload }
 
-    case 'change_list_item':
-      const newId = action.payload;
-      return { ...state, itemId: newId }
+    // case 'change_list_item':
+    //   const newId = action.payload;
+    //   return { ...state, itemId: newId }
 
     // description
     case 'fetch_description_request':

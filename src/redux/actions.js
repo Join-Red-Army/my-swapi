@@ -7,8 +7,17 @@ export const listLoaded = (listContent) => ({
   payload: listContent
 });
 
-export const changeItem = (id) => {
-  return {type: ''};
+export const onChangeItem = (id, service, method, dispatch) => {
+  dispatch(descriptionRequested());
+
+  service[method](id)
+    .then((data) => {
+      dispatch(descriptionLoaded(data));
+    });
+
+  return {
+    type: 'change_list_item',
+  };
 };
 
 // description
