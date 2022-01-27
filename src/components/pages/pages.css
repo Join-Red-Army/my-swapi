@@ -1,0 +1,31 @@
+.intro {
+  padding: 10px 20px;
+  background-color: #202020;
+  border: 1px solid #2a3235;
+  border-radius: 7px;
+}
+
+.intro ul {
+  list-style-type: none;
+}
+
+.intro p {
+  font-family: 'Montserrat', sans-serif;
+  color: #ebebeb;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.intro a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+.intro a:hover {
+  text-decoration: underline;
+}
+
+
+.highlight {
+  color: #ff7cd3;
+}
