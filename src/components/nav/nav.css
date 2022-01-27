@@ -18,6 +18,29 @@
   text-decoration: none;
 }
 
+.nav__link:last-child {
+  margin-right: 0;
+}
+
 .nav a:hover {
   color: aquamarine;
+}
+
+@media (max-width: 850px) {
+  .nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .nav__link {
+    font-size: 25px;
+    line-height: 1.5;
+    margin: 0;
+  }
 }

@@ -58,5 +58,49 @@
   100% {
     transform: scale(1);
     opacity: 0;
+  }
 }
+
+
+@media (max-width: 950px) {
+  .planet {
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+
+    border: none;
+  }
+
+  .planet__img {
+    width: 150px;
+    height: auto;
+  }
+}
+
+@media (max-width: 850px) {
+  .planet {
+    justify-content: center;
+  }
+
+  .planet__img {
+    width: 150px;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .planet {
+    padding: 0;
+    height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  .planet__info {
+    display: none;
+  }
+  .planet__img {
+    justify-content: center;
+  }
 }

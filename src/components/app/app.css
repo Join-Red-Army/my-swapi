@@ -3,3 +3,9 @@
   max-width: 1200px;
   /* display: flex; */
 }
+
+@media (max-width: 1220px) {
+  .app {
+    padding: 0 15px;
+  }
+}

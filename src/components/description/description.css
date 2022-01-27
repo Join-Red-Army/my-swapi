@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
 
-  padding: 25px;
+  padding: 25px 25px 0;
   height: 100%;
 
   background-color: red;
@@ -36,4 +36,26 @@
   display: inline-block;
   width: 100%;
   height: auto;
+}
+
+@media (max-width: 500px) {
+  .description {
+    flex-direction: column;
+  }
+
+  .description__list li {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .description__img {
+    width: 100%;
+    justify-content: center;
+  }
+  .description__img img {
+    width: 220px;
+    display: block;
+    margin: 0 auto;
+  }
+
 }

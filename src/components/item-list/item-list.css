@@ -1,5 +1,6 @@
 .item-list {
-  height: 490px;
+  /* height: 490px; */
+  height: 100%;
 }
 
 .item-list ul {
@@ -37,4 +38,20 @@
 .item-list li:last-child {
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
+}
+
+@media (max-width: 850px) {
+  .item-list li {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .list-item {
+    width: 100%;
+  }
+  .item-list li {
+    font-size: 20px;
+    text-align: center;
+  }
 }
