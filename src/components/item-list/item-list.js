@@ -10,8 +10,8 @@ import Spinner from '../spinner';
 class ItemList extends Component {
 
   componentDidMount() {
-    const { listLoaded, swapiService, serviceMethod } = this.props;
-
+    const { listLoaded, listRequested, swapiService, serviceMethod } = this.props;
+    listRequested()
     swapiService[serviceMethod]()
       .then((data) => {
         listLoaded(data);
